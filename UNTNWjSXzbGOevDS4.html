@@ -1,0 +1,1817 @@
+<html><head><base href="/">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>صيدلية كارمن</title>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Cairo:wght@400;700&display=swap');
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Cairo', sans-serif;
+  direction: rtl;
+}
+
+:root {
+  --primary: #00796b;
+  --secondary: #4db6ac;
+  --white: #ffffff;
+  --section-spacing: 4rem;
+  --card-spacing: 2.5rem;
+}
+
+body {
+  background: #f5f5f5;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+.header {
+  background: var(--primary);
+  padding: 1rem;
+  color: var(--white);
+  text-align: center;
+}
+
+.nav {
+  background: var(--secondary);
+  padding: 1rem;
+  display: flex;
+  justify-content: center;
+  gap: 2rem;
+}
+
+.nav a {
+  color: var(--white);
+  text-decoration: none;
+  font-weight: bold;
+  transition: 0.3s;
+}
+
+.nav a:hover {
+  color: var(--primary);
+}
+
+.hero {
+  min-height: 500px;
+  background: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)),url('https://images.unsplash.com/photo-1576602976047-174e57a47881?ixlib=rb-4.0.3');
+  background-size: cover;
+  background-position: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--white);
+  text-align: center;
+  position: relative;
+}
+
+.hero::after {
+  content: '';
+  position: absolute;
+  bottom: -50px;
+  left: 0;
+  right: 0;
+  height: 50px;
+  background: linear-gradient(to bottom, rgba(0,0,0,0.3), transparent);
+}
+
+.promotion-banner {
+  background: #ff5722;
+  color: white;
+  padding: 0.5rem;
+  text-align: center;
+  animation: slideIn 0.5s ease-out;
+}
+
+.services {
+  scroll-margin-top: 100px; /* This ensures the section header is visible after scrolling */
+  padding: 2rem;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 2rem;
+  text-align: center;
+  max-width: 1200px;
+  margin: var(--section-spacing) auto 0;
+}
+
+.service-card {
+  background: var(--white);
+  padding: var(--card-spacing);
+  border-radius: 15px;
+  box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+  transition: all 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
+  transform: translateY(0);
+  position: relative;
+  overflow: hidden;
+}
+
+.service-card:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 8px 25px rgba(0,0,0,0.1);
+}
+
+.service-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 5px;
+  background: var(--primary);
+}
+
+.footer {
+  background: var(--primary);
+  color: var(--white);
+  text-align: center;
+  padding: 1rem;
+  margin-top: 2rem;
+}
+
+.map-section {
+  padding: 2rem;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.contact-info {
+  background: var(--white);
+  padding: 2rem;
+  border-radius: 15px;
+  margin-bottom: 2rem;
+  box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+}
+
+.promotions {
+  padding: 2rem;
+  max-width: 1200px;
+  margin: var(--section-spacing) auto 0;
+}
+
+.promo-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 2rem;
+}
+
+.promo-card {
+  background: var(--white);
+  padding: 1.5rem;
+  border-radius: 15px;
+  box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+  transform: translateY(0);
+  transition: all 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
+}
+
+.promo-card:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 8px 25px rgba(0,0,0,0.1);
+}
+
+.promo-badge {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  background: #ff5722;
+  color: white;
+  padding: 0.5rem 1rem;
+  border-radius: 25px;
+  font-size: 0.9rem;
+}
+
+.delivery-order {
+  padding: 2rem;
+  max-width: 800px;
+  margin: var(--section-spacing) auto;
+  background: var(--white);
+  border-radius: 15px;
+  box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+}
+
+.order-form {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+  margin-top: 2rem;
+}
+
+.form-group {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.form-group label {
+  font-weight: bold;
+  color: var(--primary);
+}
+
+.form-group input,
+.form-group textarea {
+  padding: 0.8rem;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  font-size: 1rem;
+  transition: border-color 0.3s ease;
+}
+
+.form-group select {
+  padding: 0.8rem;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  font-size: 1rem;
+  transition: border-color 0.3s ease;
+  width: 100%;
+}
+
+.form-group input:focus,
+.form-group textarea:focus,
+.form-group select:focus {
+  border-color: var(--primary);
+  outline: none;
+}
+
+.form-group textarea {
+  min-height: 100px;
+  resize: vertical;
+}
+
+.preview-image {
+  margin-top: 1rem;
+  max-width: 300px;
+}
+
+.preview-image img {
+  max-width: 150px;
+  margin: 10px 0;
+  border-radius: 8px;
+}
+
+.admin-panel {
+  padding: 2rem;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.admin-login-button {
+  position: fixed;
+  top: 20px;
+  left: 20px;
+  z-index: 1000;
+  background: var(--primary);
+  color: white;
+  border: none;
+  padding: 8px 15px;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 14px;
+}
+
+.admin-login-modal {
+  position: fixed;
+  top: 70px;
+  left: 20px;
+  z-index: 1000;
+  background: white;
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+  display: none;
+}
+
+.admin-login-modal.show {
+  display: block;
+}
+
+.admin-close-button {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  background: none;
+  border: none;
+  font-size: 18px;
+  cursor: pointer;
+  color: #666;
+}
+
+.admin-login {
+  max-width: 400px;
+  margin: 2rem auto;
+  padding: 2rem;
+  background: var(--white);
+  border-radius: 15px;
+  box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+}
+
+.admin-nav {
+  display: flex;
+  gap: 1rem;
+  margin-bottom: 2rem;
+  flex-wrap: wrap;
+}
+
+.admin-nav button {
+  padding: 0.5rem 1rem;
+  background: var(--primary);
+  color: white;
+  border: none;
+  border-radius: 8px;
+}
+
+.admin-section {
+  background: var(--white);
+  padding: 2rem;
+  border-radius: 15px;
+  box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+  margin-bottom: 2rem;
+}
+
+.admin-table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.admin-table th,
+.admin-table td {
+  padding: 1rem;
+  border: 1px solid #eee;
+  text-align: right;
+}
+
+.status-badge {
+  padding: 0.25rem 0.5rem;
+  border-radius: 15px;
+  font-size: 0.9rem;
+}
+
+.status-pending {
+  background: #ffd700;
+  color: #000;
+}
+
+.status-shipped {
+  background: #4db6ac;
+  color: white;
+}
+
+.status-delivered {
+  background: #81c784;
+  color: white;
+}
+
+.products {
+  scroll-margin-top: 100px; /* This ensures the section header is visible after scrolling */
+  padding: 2rem;
+  max-width: 1200px;
+  margin: var(--section-spacing) auto 0;
+}
+
+.products-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 2rem;
+  margin-top: 2rem;
+}
+
+.product-card {
+  background: var(--white);
+  padding: 1.5rem;
+  border-radius: 15px;
+  box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+  text-align: center;
+  transition: transform 0.3s ease;
+}
+
+.product-card:hover {
+  transform: translateY(-5px);
+}
+
+.product-image {
+  width: 200px;
+  height: 200px;
+  object-fit: contain;
+  border-radius: 8px;
+}
+
+.product-price {
+  color: var(--primary);
+  font-weight: bold;
+  font-size: 1.2rem;
+  margin: 0.5rem 0;
+}
+
+.admin-item {
+  background: #f5f5f5;
+  padding: 1rem;
+  margin: 1rem 0;
+  border-radius: 8px;
+  position: relative;
+}
+
+.admin-item button {
+  background: #ff5722;
+  color: white;
+  border: none;
+  padding: 0.5rem 1rem;
+  border-radius: 4px;
+  cursor: pointer;
+  position: absolute;
+  top: 1rem;
+  left: 1rem;
+}
+
+.admin-item button:hover {
+  background: #f4511e;
+}
+
+.edit-btn {
+  background: var(--primary);
+  color: white;
+  border: none;
+  padding: 0.5rem 1rem;
+  border-radius: 4px;
+  cursor: pointer;
+  margin-right: 0.5rem;
+}
+
+.delete-btn {
+  background: #ff5722;
+  color: white;
+  border: none;
+  padding: 0.5rem 1rem;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.doctor-section {
+  padding: 4rem 2rem;
+  max-width: 1200px;
+  margin: var(--section-spacing) auto 0;
+  background: var(--white);
+  border-radius: 15px;
+  box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+  text-align: center;
+}
+
+.doctor-section h2 {
+  color: var(--primary);
+  margin-bottom: 1.5rem;
+}
+
+.doctor-section > p {
+  color: #666;
+  margin-bottom: 3rem;
+  font-size: 1.1rem;
+}
+
+.doctor-schedule {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 2rem;
+  margin-top: 2rem;
+}
+
+.schedule-item {
+  background: #f8f9fa;
+  padding: 2rem;
+  border-radius: 12px;
+  box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+  transition: transform 0.3s ease;
+  position: relative;
+  overflow: hidden;
+}
+
+.schedule-item::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 4px;
+  background: var(--primary);
+}
+
+.schedule-item:hover {
+  transform: translateY(-5px);
+}
+
+.schedule-item h3 {
+  color: var(--primary);
+  margin-bottom: 1rem;
+  font-size: 1.4rem;
+}
+
+.schedule-item p {
+  color: #666;
+  margin-bottom: 0.5rem;
+  line-height: 1.6;
+}
+
+.schedule-item p:last-child {
+  margin-top: 1rem;
+  color: var(--primary);
+  font-weight: bold;
+}
+
+#addClinicForm {
+  max-width: 600px;
+  margin: 2rem auto;
+  padding: 2rem;
+  background: #f8f9fa;
+  border-radius: 12px;
+}
+
+#clinicsList {
+  margin-top: 2rem;
+}
+
+.clinic-item {
+  background: #f8f9fa;
+  padding: 1.5rem;
+  margin-bottom: 1rem;
+  border-radius: 8px;
+  position: relative;
+  border-left: 4px solid var(--primary);
+}
+
+.clinic-item .edit-btn,
+.clinic-item .delete-btn {
+  position: absolute;
+  top: 1rem;
+  padding: 0.5rem 1rem;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.clinic-item .edit-btn {
+  right: 1rem;
+}
+
+.clinic-item .delete-btn {
+  right: 6rem;
+}
+
+.health-tips {
+  padding: 4rem 2rem;
+  max-width: 1200px;
+  margin: var(--section-spacing) auto 0;
+  background: var(--white);
+  border-radius: 15px;
+  box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+}
+
+.health-tips h2 {
+  text-align: center;
+  color: var(--primary);
+  margin-bottom: 3rem;
+}
+
+.tips-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 2rem;
+}
+
+.tip-card {
+  background: #f8f9fa;
+  padding: 2rem;
+  border-radius: 12px;
+  box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+  transition: transform 0.3s ease;
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+}
+
+.tip-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 4px;
+  background: var(--primary);
+}
+
+.tip-card:hover {
+  transform: translateY(-5px);
+}
+
+.tip-icon {
+  color: var(--primary);
+  margin-bottom: 1.5rem;
+}
+
+.tip-card h3 {
+  color: var(--primary);
+  margin-bottom: 1rem;
+}
+
+.tip-card p {
+  color: #666;
+  line-height: 1.6;
+}
+
+.partners-section {
+  padding: 4rem 2rem;
+  max-width: 1200px;
+  margin: var(--section-spacing) auto;
+  background: var(--white);
+  border-radius: 15px;
+  box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+}
+
+.partners-section h2 {
+  text-align: center;
+  color: var(--primary);
+  margin-bottom: 3rem;
+}
+
+.partners-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 2rem;
+}
+
+.partner-card {
+  background: #f8f9fa;
+  padding: 2rem;
+  border-radius: 12px;
+  box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+  text-align: center;
+  position: relative;
+  transition: transform 0.3s ease;
+  overflow: hidden;
+}
+
+.partner-card:hover {
+  transform: translateY(-5px);
+}
+
+.partner-type {
+  position: absolute;
+  top: 1rem;
+  right: 1rem;
+  background: var(--primary);
+  color: white;
+  padding: 0.5rem 1rem;
+  border-radius: 25px;
+  font-size: 0.9rem;
+}
+
+.partner-card h3 {
+  color: var(--primary);
+  margin: 1.5rem 0 1rem;
+}
+
+.partner-card p {
+  color: #666;
+  margin-bottom: 0.5rem;
+}
+
+.phone-popup {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background: var(--white);
+  padding: 2rem;
+  border-radius: 15px;
+  box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+  text-align: center;
+  z-index: 1000;
+  display: none;
+}
+
+.phone-popup.show {
+  display: block;
+}
+
+.phone-popup h3 {
+  color: var(--primary);
+  margin-bottom: 1rem;
+}
+
+.phone-popup .phone-number {
+  font-size: 1.5rem;
+  color: var(--primary);
+  margin: 1rem 0;
+  direction: ltr;
+}
+
+.phone-popup .close-btn {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  background: none;
+  border: none;
+  font-size: 1.5rem;
+  cursor: pointer;
+  color: #666;
+}
+
+.overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0,0,0,0.5);
+  display: none;
+  z-index: 999;
+}
+
+.overlay.show {
+  display: block;
+}
+</style>
+</head>
+<body>
+<button class="admin-login-button" id="showAdminLogin">تسجيل دخول المدير</button>
+<div class="admin-login-modal" id="adminLogin">
+  <button class="admin-close-button" id="closeAdminLogin">×</button>
+  <h2>تسجيل دخول المدير</h2>
+  <form id="adminLoginForm">
+    <div class="form-group">
+      <label for="adminUsername">اسم المستخدم</label>
+      <input type="text" id="adminUsername" required>
+    </div>
+    <div class="form-group">
+      <label for="adminPassword">كلمة المرور</label>
+      <input type="password" id="adminPassword" required>
+    </div>
+    <button type="submit" class="submit-btn">دخول</button>
+  </form>
+</div>
+<header class="header">
+  <h1>صيدلية كارمن</h1>
+  <p>نهتم بصحتك</p>
+</header>
+<nav class="nav">
+  <a href="#home">الرئيسية</a>
+  <a href="#services">خدماتنا</a>
+  <a href="#products">منتجاتنا</a>
+  <a href="#" onclick="showPhoneNumber(event)">اتصل بنا</a>
+</nav>
+<div class="promotion-banner">عروض حصرية! خصم 20% على المكملات الغذائية هذا الأسبوع</div>
+<div class="hero">
+  <div>
+    <h2>مرحباً بكم في صيدلية كارمن</h2>
+    <p>خدمات صيدلانية متكاملة على مدار الساعة</p>
+  </div>
+</div>
+<section class="services" id="services">
+  <div class="service-card">
+    <svg width="50" height="50" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+      <path d="M12 2a3 3 0 0 0-3 3v7h6V5a3 3 0 0 0-3-3z"></path>
+      <path d="M19 10h-1v7a3 3 0 0 1-3 3H9a3 3 0 0 1-3-3v-7H5"></path>
+      <rect x="3" y="10" width="18" height="2" rx="1"></rect>
+    </svg>
+    <h3>استشارات صيدلانية</h3>
+    <p>نقدم استشارات طبية وصيدلانية متخصصة</p>
+  </div>
+  <div class="service-card">
+    <svg width="50" height="50" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+      <rect x="3" y="3" width="18" height="18" rx="2"></rect>
+      <path d="M12 8v8m-4-4h8"></path>
+    </svg>
+    <h3>توصيل الأدوية</h3>
+    <p>خدمة توصيل سريعة للأدوية إلى منزلك</p>
+  </div>
+  <div class="service-card">
+    <svg width="50" height="50" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+      <circle cx="12" cy="12" r="10"></circle>
+      <path d="M12 6v6l4 2"></path>
+    </svg>
+    <h3>خدمة 24/7</h3>
+    <p>نعمل على مدار الساعة لخدمتكم</p>
+  </div>
+  <div class="service-card">
+    <svg width="50" height="50" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+      <path d="M22 12h-4l-3 9L9 3l-3 9H2"></path>
+    </svg>
+    <h3>متابعة صحية</h3>
+    <p>خدمة متابعة المؤشرات الصحية وضغط الدم والسكر</p>
+  </div>
+</section>
+<section class="promotions" id="promotions">
+  <h2>عروضنا المميزة</h2>
+  <div class="promo-grid">
+    <div class="promo-card">
+      <span class="promo-badge">خصم 20%</span>
+      <h3>الفيتامينات والمكملات</h3>
+      <p>مجموعة متنوعة من المكملات الغذائية عالية الجودة</p>
+    </div>
+    <div class="promo-card">
+      <span class="promo-badge">عرض خاص</span>
+      <h3>قياس مجاني</h3>
+      <p>قياس ضغط الدم والسكر مجاناً مع أي مشتريات</p>
+    </div>
+    <div class="promo-card">
+      <span class="promo-badge">توفير 15%</span>
+      <h3>منتجات العناية</h3>
+      <p>خصومات على منتجات العناية بالبشرة والشعر</p>
+    </div>
+  </div>
+</section>
+<section class="products" id="products">
+  <h2>منتجاتنا</h2>
+  <div class="products-grid" id="productsDisplay">
+    <!-- Products will be displayed here dynamically -->
+  </div>
+</section>
+<section class="doctor-section" id="doctor">
+  <h2>عيادة التخسيس والتغذية العلاجية</h2>
+  <p>نقدم استشارات متخصصة في التخسيس والتغذية العلاجية مع نخبة من الأطباء المتخصصين</p>
+  <div class="doctor-schedule">
+    <div class="schedule-item">
+      <h3>د. سارة أحمد</h3>
+      <p>استشاري التغذية العلاجية</p>
+      <p>السبت والثلاثاء: 4م - 9م</p>
+    </div>
+    <div class="schedule-item">
+      <h3>د. محمد خالد</h3>
+      <p>أخصائي السمنة والتخسيس</p>
+      <p>الأحد والأربعاء: 5م - 10م</p>
+    </div>
+  </div>
+</section>
+<section class="map-section" id="location">
+  <div class="contact-info">
+    <h2>موقعنا</h2>
+    <p>العنوان: السيوف شماعه</p>
+    <p>رقم الهاتف: 01282950658</p>
+    <a href="https://goo.gl/maps/1Z9Z9Z9Z9Z9Z9Z9Z9" target="_blank" style="display: inline-block; margin-top: 1rem; padding: 0.5rem 1rem; background: var(--primary); color: white; text-decoration: none; border-radius: 5px;">
+      <svg style="width: 20px; height: 20px; vertical-align: middle; margin-left: 5px;" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+        <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path>
+        <circle cx="12" cy="10" r="3"></circle>
+      </svg>افتح في خرائط جوجل</a>
+  </div>
+  <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3412.9247357666387!2d29.9338!3d31.2187!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zMzHCsDEzA3LjMiTiAyOcKwNTYnMDEuNyJF!5e0!3m2!1sen!2seg!4v1635942144889!5m2!1sen!2seg" width="100%" height="450" style="border:0; border-radius: 15px;" allowfullscreen="" loading="lazy"></iframe>
+</section>
+<section class="health-tips">
+  <h2>نصائح صحية</h2>
+  <div class="tips-grid">
+    <div class="tip-card">
+      <div class="tip-icon">
+        <svg width="50" height="50" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <path d="M18 8h1a4 4 0 0 1 0 8h-1"></path>
+          <path d="M2 8h16v9a4 4 0 0 1-4 4H6a4 4 0 0 1-4-4V8z"></path>
+          <line x1="6" y1="1" x2="6" y2="4"></line>
+          <line x1="10" y1="1" x2="10" y2="4"></line>
+          <line x1="14" y1="1" x2="14" y2="4"></line>
+        </svg>
+      </div>
+      <h3>تناول الأدوية في موعدها</h3>
+      <p>احرص على تناول الأدوية في مواعيدها المحددة للحصول على أفضل النتائج العلاجية</p>
+    </div>
+    <div class="tip-card">
+      <div class="tip-icon">
+        <svg width="50" height="50" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <circle cx="12" cy="12" r="10"></circle>
+          <path d="M8 14s1.5 2 4 2 4-2 4-2"></path>
+          <line x1="9" y1="9" x2="9.01" y2="9"></line>
+          <line x1="15" y1="9" x2="15.01" y2="9"></line>
+        </svg>
+      </div>
+      <h3>نمط حياة صحي</h3>
+      <p>مارس الرياضة بانتظام وتناول غذاءً صحياً متوازناً للحفاظ على صحتك</p>
+    </div>
+    <div class="tip-card">
+      <div class="tip-icon">
+        <svg width="50" height="50" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <path d="M22 12h-4l-3 9L9 3l-3 9H2"></path>
+        </svg>
+      </div>
+      <h3>متابعة المؤشرات الصحية</h3>
+      <p>راقب ضغط الدم ومستوى السكر بشكل دوري للاطمئنان على صحتك</p>
+    </div>
+  </div>
+</section>
+<section class="partners-section">
+  <h2>شركاؤنا في الخدمات الصحية</h2>
+  <div class="partners-grid">
+    <div class="partner-card">
+      <span class="partner-type">معدات طبية</span>
+      <div class="partner-logo">
+        <svg width="80" height="80" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <path d="M19 14c1.49-1.46 3-3.21 3-5.5A5.5 5.5 0 0 0 16.5 3c-1.76 0-3 .5-4.5 2-1.5-1.5-2.74-2-4.5-2A5.5 5.5 0 0 0 2 8.5c0 2.3 1.5 4.05 3 5.5l7 7Z"></path>
+        </svg>
+      </div>
+      <h3>معدات طبية منزلية</h3>
+      <p>أجهزة قياس السكر وضغط الدم وأجهزة الاستنشاق</p>
+      <p>خصم 10% للعملاء الجدد</p>
+    </div>
+    <div class="partner-card">
+      <span class="partner-type">رعاية منزلية</span>
+      <div class="partner-logo">
+        <svg width="80" height="80" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path>
+          <polyline points="9 22 9 12 15 12 15 22"></polyline>
+        </svg>
+      </div>
+      <h3>خدمات التمريض المنزلي</h3>
+      <p>رعاية صحية متكاملة في منزلك</p>
+      <p>متوفر على مدار 24 ساعة</p>
+    </div>
+    <div class="partner-card">
+      <span class="partner-type">مختبرات</span>
+      <div class="partner-logo">
+        <svg width="80" height="80" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <path d="M20 14.66V20a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2h5.34"></path>
+          <polygon points="18 2 22 6 12 16 8 16 8 12 18 2"></polygon>
+        </svg>
+      </div>
+      <h3>مختبرات التحاليل الطبية</h3>
+      <p>سحب عينات منزلي ونتائج إلكترونية</p>
+      <p>خصم 15% على التحاليل الشاملة</p>
+    </div>
+    <div class="partner-card">
+      <span class="partner-type">مستلزمات طبية</span>
+      <div class="partner-logo">
+        <svg width="80" height="80" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <rect x="3" y="3" width="18" height="18" rx="2" ry="2"></rect>
+          <line x1="12" y1="8" x2="12" y2="16"></line>
+          <line x1="8" y1="12" x2="16" y1="12"></line>
+        </svg>
+      </div>
+      <h3>مستلزمات طبية متخصصة</h3>
+      <p>جميع المستلزمات الطبية والضمادات</p>
+      <p>توصيل مجاني للطلبات</p>
+    </div>
+  </div>
+</section>
+<section class="delivery-order" id="order">
+  <h2>طلب توصيل دواء</h2>
+  <form class="order-form" id="deliveryForm">
+    <div class="form-group">
+      <label for="customerName">الاسم</label>
+      <input type="text" id="customerName" name="customerName" required>
+    </div>
+    <div class="form-group">
+      <label for="phone">رقم الهاتف</label>
+      <input type="tel" id="phone" name="phone" required>
+    </div>
+    <div class="form-group">
+      <label for="address">العنوان</label>
+      <textarea id="address" name="address" required></textarea>
+    </div>
+    <div class="form-group">
+      <label for="medicineDetails">تفاصيل الدواء</label>
+      <textarea id="medicineDetails" name="medicineDetails" placeholder="اكتب اسم الدواء والكمية المطلوبة"></textarea>
+    </div>
+    <div class="form-group">
+      <label for="paymentMethod">طريقة الدفع</label>
+      <select id="paymentMethod" name="paymentMethod" required>
+        <option value="">اختر طريقة الدفع</option>
+        <option value="visa">بطاقات فيزا</option>
+        <option value="vodafone">فودافون كاش</option>
+        <option value="cash">الدفع النقدي</option>
+      </select>
+    </div>
+    <div class="form-group">
+      <label for="prescription">أو قم برفع صورة الروشتة</label>
+      <input type="file" id="prescription" name="prescription" accept="image/*">
+      <div class="preview-image" id="imagePreview"></div>
+    </div>
+    <button type="submit" class="submit-btn">إرسال الطلب</button>
+  </form>
+</section>
+<section class="admin-panel" id="admin">
+  <div class="admin-dashboard" id="adminDashboard" style="display: none;">
+    <div class="admin-nav">
+      <button data-section="products">إدارة المنتجات</button>
+      <button data-section="orders">إدارة الطلبات</button>
+      <button data-section="partners">إدارة الشركاء</button>
+      <button data-section="promotions">إدارة العروض</button>
+      <button data-section="reports">التقارير</button>
+      <button data-section="clinics">إدارة العيادات</button>
+      <button id="adminLogout">تسجيل خروج</button>
+    </div>
+    <div class="admin-section" id="productsSection">
+      <h2>إدارة المنتجات</h2>
+      <form id="addProductForm">
+        <div class="form-group">
+          <label for="productName">اسم المنتج</label>
+          <input type="text" id="productName" required>
+        </div>
+        <div class="form-group">
+          <label for="productPrice">السعر</label>
+          <input type="number" id="productPrice" required>
+        </div>
+        <div class="form-group">
+          <label for="productImage">صورة المنتج</label>
+          <input type="file" id="productImage" accept="image/*">
+        </div>
+        <button type="submit" class="submit-btn" id="productSubmitBtn">إضافة منتج</button>
+      </form>
+      <div id="adminProductsList"></div>
+    </div>
+    <div class="admin-section" id="ordersSection">
+      <h2>إدارة الطلبات</h2>
+      <table class="admin-table">
+        <thead>
+          <tr>
+            <th>رقم الطلب</th>
+            <th>اسم العميل</th>
+            <th>التاريخ</th>
+            <th>طريقة الدفع</th>
+            <th>الحالة</th>
+            <th>صورة الروشتة</th>
+            <th>الإجراءات</th>
+          </tr>
+        </thead>
+        <tbody id="ordersList">
+          <!-- Orders will be populated here -->
+        </tbody>
+      </table>
+    </div>
+    <div class="admin-section" id="partnersSection" style="display: none;">
+      <h2>إدارة الشركاء</h2>
+      <form id="addPartnerForm">
+        <div class="form-group">
+          <label for="partnerName">اسم الشريك</label>
+          <input type="text" id="partnerName" required>
+        </div>
+        <div class="form-group">
+          <label for="partnerType">نوع الشريك</label>
+          <input type="text" id="partnerType" required>
+        </div>
+        <div class="form-group">
+          <label for="partnerDescription">وصف الخدمات</label>
+          <textarea id="partnerDescription" required></textarea>
+        </div>
+        <div class="form-group">
+          <label for="partnerOffer">العرض الخاص</label>
+          <input type="text" id="partnerOffer">
+        </div>
+        <div class="form-group">
+          <label for="partnerImage">صورة الشريك</label>
+          <input type="file" id="partnerImage" accept="image/*">
+          <div class="preview-image" id="partnerImagePreview"></div>
+        </div>
+        <button type="submit" class="submit-btn">إضافة شريك</button>
+      </form>
+      <div id="partnersList"></div>
+    </div>
+    <div class="admin-section" id="promotionsSection" style="display: none;">
+      <h2>إدارة العروض</h2>
+      <form id="addPromotionForm">
+        <div class="form-group">
+          <label for="promoTitle">عنوان العرض</label>
+          <input type="text" id="promoTitle" required>
+        </div>
+        <div class="form-group">
+          <label for="promoDiscount">نسبة الخصم</label>
+          <input type="text" id="promoDiscount" required>
+        </div>
+        <div class="form-group">
+          <label for="promoDescription">وصف العرض</label>
+          <textarea id="promoDescription" required></textarea>
+        </div>
+        <div class="form-group">
+          <label for="promoImage">صورة العرض</label>
+          <input type="file" id="promoImage" accept="image/*">
+          <div class="preview-image" id="promoImagePreview"></div>
+        </div>
+        <button type="submit" class="submit-btn">إضافة عرض</button>
+      </form>
+      <div id="promotionsList"></div>
+    </div>
+    <div class="admin-section" id="reportsSection">
+      <h2>التقارير</h2>
+      <div class="report-filters">
+        <select id="reportType">
+          <option value="daily">تقرير يومي</option>
+          <option value="weekly">تقرير أسبوعي</option>
+          <option value="monthly">تقرير شهري</option>
+        </select>
+        <button onclick="generateReport()" class="submit-btn">إنشاء التقرير</button>
+      </div>
+      <div id="reportResults"></div>
+    </div>
+    <div class="admin-section" id="clinicsSection">
+      <h2>إدارة عيادات التخسيس</h2>
+      <form id="addClinicForm">
+        <div class="form-group">
+          <label for="doctorName">اسم الطبيب</label>
+          <input type="text" id="doctorName" required>
+        </div>
+        <div class="form-group">
+          <label for="specialty">التخصص</label>
+          <input type="text" id="specialty" required>
+        </div>
+        <div class="form-group">
+          <label for="schedule">المواعيد</label>
+          <input type="text" id="schedule" required>
+        </div>
+        <button type="submit" class="submit-btn" id="clinicSubmitBtn">إضافة عيادة</button>
+      </form>
+      <div id="clinicsList"></div>
+    </div>
+  </div>
+</section>
+<div class="overlay" id="overlay"></div>
+<div class="phone-popup" id="phonePopup">
+  <button class="close-btn" onclick="closePhonePopup()">×</button>
+  <h3>اتصل بنا</h3>
+  <p>يمكنك الاتصال بنا على الرقم</p>
+  <div class="phone-number">01282950658</div>
+  <a href="tel:01282950658" class="submit-btn" style="display: inline-block; text-decoration: none; margin-top: 1rem;">
+    اتصل الآن
+  </a>
+</div>
+<footer class="footer">
+  <p>جميع الحقوق محفوظة © 2023 صيدلية كارمن</p>
+  <p>العنوان: السيوف شماعه</p>
+  <p>للتواصل: 01282950658</p>
+</footer>
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+  // Initialize products with some default items if none exist
+  if (!localStorage.getItem('products')) {
+    const defaultProducts = [
+      {
+        id: 1,
+        name: "كريم مرطب للبشرة",
+        price: "150",
+        image: "https://images.pexels.com/photos/3685530/pexels-photo-3685530.jpeg"
+      },
+      {
+        id: 2,
+        name: "مجموعة العناية بالبشرة",
+        price: "299",
+        image: "https://images.pexels.com/photos/4465124/pexels-photo-4465124.jpeg"
+      },
+      {
+        id: 3,
+        name: "كريم واقي من الشمس",
+        price: "120",
+        image: "https://images.pexels.com/photos/3785147/pexels-photo-3785147.jpeg"
+      },
+      {
+        id: 4,
+        name: "سيروم فيتامين سي",
+        price: "180",
+        image: "https://images.pexels.com/photos/4465829/pexels-photo-4465829.jpeg"
+      }
+    ];
+    localStorage.setItem('products', JSON.stringify(defaultProducts));
+  }
+
+  const deliveryForm = document.getElementById('deliveryForm');
+  const imagePreview = document.getElementById('imagePreview');
+  const prescriptionInput = document.getElementById('prescription');
+  if (!localStorage.getItem('orders')) {
+    localStorage.setItem('orders', JSON.stringify([]));
+  }
+  if (!localStorage.getItem('partners')) {
+    localStorage.setItem('partners', JSON.stringify([]));
+  }
+  if (!localStorage.getItem('promotions')) {
+    localStorage.setItem('promotions', JSON.stringify([]));
+  }
+  if (!localStorage.getItem('products')) {
+    localStorage.setItem('products', JSON.stringify([]));
+  }
+  if (!localStorage.getItem('clinics')) {
+    localStorage.setItem('clinics', JSON.stringify([]));
+  }
+
+  prescriptionInput.addEventListener('change', function(e) {
+    const file = e.target.files[0];
+    if (file) {
+      const reader = new FileReader();
+      reader.onload = function(e) {
+        imagePreview.innerHTML = `<img src="${e.target.result}" alt="Preview">`;
+      };
+      reader.readAsDataURL(file);
+    }
+  });
+  if (deliveryForm) {
+    deliveryForm.addEventListener('submit', function(e) {
+      e.preventDefault();
+      const form = this; // Store reference to form
+      const name = document.getElementById('customerName').value;
+      const phone = document.getElementById('phone').value;
+      const address = document.getElementById('address').value;
+      const medicineDetails = document.getElementById('medicineDetails').value;
+      const paymentMethod = document.getElementById('paymentMethod').value;
+      const prescriptionInput = document.getElementById('prescription');
+      let prescriptionImage = '';
+
+      // Handle prescription image
+      if (prescriptionInput.files && prescriptionInput.files[0]) {
+        const reader = new FileReader();
+        reader.onload = function(e) {
+          prescriptionImage = e.target.result;
+
+          const newOrder = {
+            id: Date.now(),
+            customerName: name,
+            phone: phone,
+            address: address,
+            medicineDetails: medicineDetails,
+            paymentMethod: paymentMethod,
+            date: new Date().toLocaleString('ar-EG'),
+            status: 'pending',
+            prescriptionImage: prescriptionImage
+          };
+
+          const orders = JSON.parse(localStorage.getItem('orders') || '[]');
+          orders.push(newOrder);
+          localStorage.setItem('orders', JSON.stringify(orders));
+          updateOrdersTable();
+          alert('تم استلام طلبك بنجاح! سنتواصل معك قريباً');
+          form.reset(); // Use stored form reference
+          if (imagePreview) {
+            imagePreview.innerHTML = '';
+          }
+        };
+        reader.readAsDataURL(prescriptionInput.files[0]);
+      } else {
+        // If no image was uploaded
+        const newOrder = {
+          id: Date.now(),
+          customerName: name,
+          phone: phone,
+          address: address,
+          medicineDetails: medicineDetails,
+          paymentMethod: paymentMethod,
+          date: new Date().toLocaleString('ar-EG'),
+          status: 'pending',
+          prescriptionImage: ''
+        };
+
+        const orders = JSON.parse(localStorage.getItem('orders') || '[]');
+        orders.push(newOrder);
+        localStorage.setItem('orders', JSON.stringify(orders));
+        updateOrdersTable();
+        alert('تم استلام طلبك بنجاح! سنتواصل معك قريباً');
+        form.reset(); // Use stored form reference
+        if (imagePreview) {
+          imagePreview.innerHTML = '';
+        }
+      }
+    });
+  }
+  function updateOrdersTable() {
+    const ordersList = document.getElementById('ordersList');
+    if (ordersList) {
+      const orders = JSON.parse(localStorage.getItem('orders') || '[]');
+      ordersList.innerHTML = orders.map(order => `
+        <tr>
+          <td>${order.id}</td>
+          <td>${order.customerName}</td>
+          <td>${order.date}</td>
+          <td>${getPaymentMethodText(order.paymentMethod)}</td>
+          <td><span class="status-badge status-${order.status}">${order.status === 'pending' ? 'قيد الانتظار' : order.status === 'shipped' ? 'تم الشحن' : 'تم التوصيل'}</span></td>
+          <td>
+            ${order.prescriptionImage ? 
+              `<img src="${order.prescriptionImage}" alt="prescription" style="max-width: 100px; cursor: pointer;" 
+               onclick="showFullImage('${order.prescriptionImage}')">` : 
+              'لا توجد صورة'}
+          </td>
+          <td><select onchange="updateOrderStatus(${order.id}, this.value)">
+            <option value="pending" ${order.status === 'pending' ? 'selected' : ''}>قيد الانتظار</option>
+            <option value="shipped" ${order.status === 'shipped' ? 'selected' : ''}>تم الشحن</option>
+            <option value="delivered" ${order.status === 'delivered' ? 'selected' : ''}>تم التوصيل</option>
+          </select></td>
+        </tr>
+      `).join('');
+    }
+  }
+  window.updateOrderStatus = function(orderId, newStatus) {
+    const orders = JSON.parse(localStorage.getItem('orders') || '[]');
+    const orderIndex = orders.findIndex(order => order.id === orderId);
+    if (orderIndex !== -1) {
+      orders[orderIndex].status = newStatus;
+      localStorage.setItem('orders', JSON.stringify(orders));
+      updateOrdersTable();
+    }
+  };
+  function getPaymentMethodText(method) {
+    const methods = {
+      'visa': 'بطاقات فيزا',
+      'vodafone': 'فودافون كاش',
+      'cash': 'الدفع النقدي'
+    };
+    return methods[method] || method;
+  }
+  updateOrdersTable();
+
+  const addClinicForm = document.getElementById('addClinicForm');
+  if (addClinicForm) {
+    addClinicForm.addEventListener('submit', function(e) {
+      e.preventDefault();
+      const clinicId = addClinicForm.dataset.editId;
+      const doctorName = document.getElementById('doctorName').value;
+      const specialty = document.getElementById('specialty').value;
+      const schedule = document.getElementById('schedule').value;
+
+      if (clinicId) {
+        // Edit existing clinic
+        const clinics = JSON.parse(localStorage.getItem('clinics') || '[]');
+        const clinicIndex = clinics.findIndex(c => c.id == clinicId);
+        if (clinicIndex !== -1) {
+          clinics[clinicIndex] = {
+            ...clinics[clinicIndex],
+            doctorName,
+            specialty,
+            schedule
+          };
+          localStorage.setItem('clinics', JSON.stringify(clinics));
+          delete addClinicForm.dataset.editId;
+          document.getElementById('clinicSubmitBtn').textContent = 'إضافة عيادة';
+        }
+      } else {
+        // Add new clinic
+        const newClinic = {
+          id: Date.now(),
+          doctorName,
+          specialty,
+          schedule
+        };
+        const clinics = JSON.parse(localStorage.getItem('clinics') || '[]');
+        clinics.push(newClinic);
+        localStorage.setItem('clinics', JSON.stringify(clinics));
+      }
+
+      displayClinics();
+      addClinicForm.reset();
+      alert('تم حفظ بيانات العيادة بنجاح');
+    });
+  }
+
+  function displayClinics() {
+    const clinicsList = document.getElementById('clinicsList');
+    if (clinicsList) {
+      const clinics = JSON.parse(localStorage.getItem('clinics') || '[]');
+      clinicsList.innerHTML = clinics.map(clinic => `
+        <div class="clinic-item">
+          <h3>${clinic.doctorName}</h3>
+          <p>${clinic.specialty}</p>
+          <p>${clinic.schedule}</p>
+          <button onclick="editClinic(${clinic.id})" class="edit-btn">تعديل</button>
+          <button onclick="deleteClinic(${clinic.id})" class="delete-btn">حذف</button>
+        </div>
+      `).join('');
+    }
+  }
+
+  window.editClinic = function(clinicId) {
+    const clinics = JSON.parse(localStorage.getItem('clinics') || '[]');
+    const clinic = clinics.find(c => c.id === clinicId);
+    
+    if (clinic) {
+      document.getElementById('doctorName').value = clinic.doctorName;
+      document.getElementById('specialty').value = clinic.specialty;
+      document.getElementById('schedule').value = clinic.schedule;
+      document.getElementById('addClinicForm').dataset.editId = clinicId;
+      document.getElementById('clinicSubmitBtn').textContent = 'تحديث العيادة';
+    }
+  };
+
+  window.deleteClinic = function(clinicId) {
+    if (confirm('هل أنت متأكد من حذف هذه العيادة؟')) {
+      const clinics = JSON.parse(localStorage.getItem('clinics') || '[]');
+      const updatedClinics = clinics.filter(c => c.id !== clinicId);
+      localStorage.setItem('clinics', JSON.stringify(updatedClinics));
+      displayClinics();
+      alert('تم حذف العيادة بنجاح');
+    }
+  };
+
+  displayClinics();
+});
+document.addEventListener('DOMContentLoaded', function() {
+  const showAdminLogin = document.getElementById('showAdminLogin');
+  const closeAdminLogin = document.getElementById('closeAdminLogin');
+  const adminLoginModal = document.getElementById('adminLogin');
+  
+  showAdminLogin.addEventListener('click', function() {
+    adminLoginModal.classList.add('show');
+  });
+  
+  closeAdminLogin.addEventListener('click', function() {
+    adminLoginModal.classList.remove('show');
+  });
+  
+  // Close modal when clicking outside
+  window.addEventListener('click', function(e) {
+    if (e.target === adminLoginModal) {
+      adminLoginModal.classList.remove('show');
+    }
+  });
+
+  // Prevent modal from closing when clicking inside the form
+  adminLoginModal.querySelector('form').addEventListener('click', function(e) {
+    e.stopPropagation();
+  });
+
+  const adminLoginForm = document.getElementById('adminLoginForm');
+  const adminLogout = document.getElementById('adminLogout');
+  const ADMIN_CREDENTIALS = {
+    username: 'MMM',
+    password: '100100100'
+  };
+  adminLoginForm.addEventListener('submit', function(e) {
+    e.preventDefault();
+    const username = document.getElementById('adminUsername').value;
+    const password = document.getElementById('adminPassword').value;
+    if (username === ADMIN_CREDENTIALS.username && password === ADMIN_CREDENTIALS.password) {
+      adminLoginModal.style.display = 'none';
+      document.getElementById('adminDashboard').style.display = 'block';
+    } else {
+      alert('بيانات غير صحيحة');
+    }
+  });
+  adminLogout.addEventListener('click', function() {
+    adminLoginModal.style.display = 'block';
+    document.getElementById('adminDashboard').style.display = 'none';
+    adminLoginForm.reset();
+  });
+  const adminNav = document.querySelector('.admin-nav');
+  const sections = document.querySelectorAll('.admin-section');
+  adminNav.addEventListener('click', function(e) {
+    if (e.target.dataset.section) {
+      sections.forEach(section => {
+        section.style.display = section.id === e.target.dataset.section + 'Section' ? 'block' : 'none';
+      });
+    }
+  });
+  function displayProducts() {
+    const productsDisplay = document.getElementById('productsDisplay');
+    const adminProductsList = document.getElementById('adminProductsList');
+    
+    if (productsDisplay || adminProductsList) {
+      const products = JSON.parse(localStorage.getItem('products') || '[]');
+      
+      if (adminProductsList) {
+        adminProductsList.innerHTML = products.map(product => `
+          <div class="admin-item">
+            <img src="${product.image}" alt="${product.name}" style="max-width: 100px;">
+            <h3>${product.name}</h3>
+            <p>السعر: ${product.price} جنيه مصري</p>
+            <button onclick="editProduct(${product.id})" class="edit-btn">تعديل</button>
+            <button onclick="deleteProduct(${product.id})" class="delete-btn">حذف</button>
+          </div>
+        `).join('');
+      }
+      
+      if (productsDisplay) {
+        productsDisplay.innerHTML = products.map(product => `
+          <div class="product-card">
+            <img src="${product.image}" alt="${product.name}" class="product-image">
+            <h3>${product.name}</h3>
+            <p class="product-price">${product.price} جنيه مصري</p>
+          </div>
+        `).join('');
+      }
+    }
+  }
+
+  window.editProduct = function(productId) {
+    const products = JSON.parse(localStorage.getItem('products') || '[]');
+    const product = products.find(p => p.id === productId);
+    
+    if (product) {
+      document.getElementById('productName').value = product.name;
+      document.getElementById('productPrice').value = product.price;
+      document.getElementById('addProductForm').dataset.editId = productId;
+      document.getElementById('productSubmitBtn').textContent = 'تحديث المنتج';
+    }
+  };
+
+  window.deleteProduct = function(productId) {
+    if (confirm('هل أنت متأكد من حذف هذا المنتج؟')) {
+      const products = JSON.parse(localStorage.getItem('products') || '[]');
+      const updatedProducts = products.filter(p => p.id !== productId);
+      localStorage.setItem('products', JSON.stringify(updatedProducts));
+      displayProducts();
+      alert('تم حذف المنتج بنجاح');
+    }
+  };
+
+  const addProductForm = document.getElementById('addProductForm');
+  if (addProductForm) {
+    addProductForm.addEventListener('submit', function(e) {
+      e.preventDefault();
+      const productId = addProductForm.dataset.editId;
+      const productName = document.getElementById('productName').value;
+      const productPrice = document.getElementById('productPrice').value;
+      const productImage = document.getElementById('productImage').files[0];
+
+      if (productId) {
+        const products = JSON.parse(localStorage.getItem('products') || '[]');
+        const productIndex = products.findIndex(p => p.id == productId);
+        if (productIndex !== -1) {
+          const reader = new FileReader();
+          reader.onload = function(e) {
+            products[productIndex].name = productName;
+            products[productIndex].price = productPrice;
+            products[productIndex].image = e.target.result;
+            localStorage.setItem('products', JSON.stringify(products));
+            displayProducts();
+            addProductForm.reset();
+            alert('تم تحديث المنتج بنجاح');
+            delete addProductForm.dataset.editId;
+            document.getElementById('productSubmitBtn').textContent = 'إضافة منتج';
+          };
+          if (productImage) {
+            reader.readAsDataURL(productImage);
+          } else {
+            products[productIndex].name = productName;
+            products[productIndex].price = productPrice;
+            localStorage.setItem('products', JSON.stringify(products));
+            displayProducts();
+            addProductForm.reset();
+            alert('تم تحديث المنتج بنجاح');
+            delete addProductForm.dataset.editId;
+            document.getElementById('productSubmitBtn').textContent = 'إضافة منتج';
+          }
+        }
+      } else {
+        if (productImage) {
+          const reader = new FileReader();
+          reader.onload = function(e) {
+            const newProduct = {
+              id: Date.now(),
+              name: productName,
+              price: productPrice,
+              image: e.target.result
+            };
+            const products = JSON.parse(localStorage.getItem('products'));
+            products.push(newProduct);
+            localStorage.setItem('products', JSON.stringify(products));
+            displayProducts();
+            addProductForm.reset();
+            alert('تم إضافة المنتج بنجاح');
+          };
+          reader.readAsDataURL(productImage);
+        }
+      }
+    });
+  }
+
+  displayProducts();
+});
+document.addEventListener('DOMContentLoaded', function() {
+  const addPartnerForm = document.getElementById('addPartnerForm');
+  const partnerImagePreview = document.getElementById('partnerImagePreview');
+
+  if (addPartnerForm) {
+    // Add image preview handler
+    document.getElementById('partnerImage').addEventListener('change', function(e) {
+      const file = e.target.files[0];
+      if (file) {
+        const reader = new FileReader();
+        reader.onload = function(e) {
+          partnerImagePreview.innerHTML = `<img src="${e.target.result}" alt="Preview">`;
+        };
+        reader.readAsDataURL(file);
+      }
+    });
+
+    addPartnerForm.addEventListener('submit', function(e) {
+      e.preventDefault();
+      const partnerImage = document.getElementById('partnerImage').files[0];
+      
+      if (partnerImage) {
+        const reader = new FileReader();
+        reader.onload = function(e) {
+          const partner = {
+            id: Date.now(),
+            name: document.getElementById('partnerName').value,
+            type: document.getElementById('partnerType').value,
+            description: document.getElementById('partnerDescription').value,
+            offer: document.getElementById('partnerOffer').value,
+            image: e.target.result
+          };
+          const partners = JSON.parse(localStorage.getItem('partners') || '[]');
+          partners.push(partner);
+          localStorage.setItem('partners', JSON.stringify(partners));
+          displayPartners();
+          addPartnerForm.reset();
+          partnerImagePreview.innerHTML = '';
+          alert('تم إضافة الشريك بنجاح');
+        };
+        reader.readAsDataURL(partnerImage);
+      }
+    });
+  }
+
+  // Update the partner display function
+  function displayPartners() {
+    const partnersGrid = document.querySelector('.partners-grid');
+    const partnersList = document.getElementById('partnersList');
+    if (partnersGrid || partnersList) {
+      const partners = JSON.parse(localStorage.getItem('partners') || '[]');
+      if (partnersList) {
+        partnersList.innerHTML = partners.map(partner => `
+          <div class="admin-item">
+            ${partner.image ? `<img src="${partner.image}" alt="${partner.name}" style="max-width: 100px; margin-bottom: 10px;">` : ''}
+            <h3>${partner.name}</h3>
+            <p>النوع: ${partner.type}</p>
+            <p>${partner.description}</p>
+            <button onclick="editPartner(${partner.id})" class="edit-btn">تعديل</button>
+            <button onclick="deletePartner(${partner.id})" class="delete-btn">حذف</button>
+          </div>
+        `).join('');
+      }
+      if (partnersGrid) {
+        partnersGrid.innerHTML = partners.map(partner => `
+          <div class="partner-card">
+            ${partner.image ? `<img src="${partner.image}" alt="${partner.name}" style="max-width: 150px; margin-bottom: 15px;">` : ''}
+            <span class="partner-type">${partner.type}</span>
+            <h3>${partner.name}</h3>
+            <p>${partner.description}</p>
+            <p>${partner.offer}</p>
+          </div>
+        `).join('');
+      }
+    }
+  }
+
+  window.deletePartner = function(partnerId) {
+    if (confirm('هل أنت متأكد من حذف هذا الشريك؟')) {
+      const partners = JSON.parse(localStorage.getItem('partners') || '[]');
+      const updatedPartners = partners.filter(p => p.id !== partnerId);
+      localStorage.setItem('partners', JSON.stringify(updatedPartners));
+      displayPartners();
+      alert('تم حذف الشريك بنجاح');
+    }
+  }
+});
+
+// Update the promotion form handling code
+document.addEventListener('DOMContentLoaded', function() {
+  const addPromotionForm = document.getElementById('addPromotionForm');
+  const promoImagePreview = document.getElementById('promoImagePreview');
+
+  if (addPromotionForm) {
+    // Add image preview handler
+    document.getElementById('promoImage').addEventListener('change', function(e) {
+      const file = e.target.files[0];
+      if (file) {
+        const reader = new FileReader();
+        reader.onload = function(e) {
+          promoImagePreview.innerHTML = `<img src="${e.target.result}" alt="Preview">`;
+        };
+        reader.readAsDataURL(file);
+      }
+    });
+
+    addPromotionForm.addEventListener('submit', function(e) {
+      e.preventDefault();
+      const promoImage = document.getElementById('promoImage').files[0];
+      
+      if (promoImage) {
+        const reader = new FileReader();
+        reader.onload = function(e) {
+          const promotion = {
+            id: Date.now(),
+            title: document.getElementById('promoTitle').value,
+            discount: document.getElementById('promoDiscount').value,
+            description: document.getElementById('promoDescription').value,
+            image: e.target.result
+          };
+          const promotions = JSON.parse(localStorage.getItem('promotions') || '[]');
+          promotions.push(promotion);
+          localStorage.setItem('promotions', JSON.stringify(promotions));
+          displayPromotions();
+          addPromotionForm.reset();
+          promoImagePreview.innerHTML = '';
+          alert('تم إضافة العرض بنجاح');
+        };
+        reader.readAsDataURL(promoImage);
+      }
+    });
+  }
+
+  // Update the promotions display function
+  function displayPromotions() {
+    const promoGrid = document.querySelector('.promo-grid');
+    const promotionsList = document.getElementById('promotionsList');
+    if (promoGrid || promotionsList) {
+      const promotions = JSON.parse(localStorage.getItem('promotions') || '[]');
+      if (promotionsList) {
+        promotionsList.innerHTML = promotions.map(promo => `
+          <div class="admin-item">
+            ${promo.image ? `<img src="${promo.image}" alt="${promo.title}" style="max-width: 100px; margin-bottom: 10px;">` : ''}
+            <h3>${promo.title}</h3>
+            <p>الخصم: ${promo.discount}</p>
+            <p>${promo.description}</p>
+            <button onclick="deletePromotion(${promo.id})" class="delete-btn">حذف</button>
+          </div>
+        `).join('');
+      }
+      if (promoGrid) {
+        promoGrid.innerHTML = promotions.map(promo => `
+          <div class="promo-card">
+            ${promo.image ? `<img src="${promo.image}" alt="${promo.title}" style="max-width: 150px; margin-bottom: 15px;">` : ''}
+            <span class="promo-badge">${promo.discount}</span>
+            <h3>${promo.title}</h3>
+            <p>${promo.description}</p>
+          </div>
+        `).join('');
+      }
+    }
+  }
+
+  window.deletePromotion = function(promoId) {
+    if (confirm('هل أنت متأكد من حذف هذا العرض؟')) {
+      const promotions = JSON.parse(localStorage.getItem('promotions') || '[]');
+      const updatedPromotions = promotions.filter(p => p.id !== promoId);
+      localStorage.setItem('promotions', JSON.stringify(updatedPromotions));
+      displayPromotions();
+      alert('تم حذف العرض بنجاح');
+    }
+  }
+});
+
+// Add smooth scrolling to nav links
+document.addEventListener('DOMContentLoaded', function() {
+  document.querySelectorAll('.nav a').forEach(anchor => {
+    anchor.addEventListener('click', function (e) {
+      e.preventDefault();
+      const sectionId = this.getAttribute('href').substring(1);
+      const section = document.getElementById(sectionId);
+      if (section) {
+        section.scrollIntoView({
+          behavior: 'smooth'
+        });
+      }
+    });
+  });
+});
+
+// Phone number popup functions
+function showPhoneNumber(event) {
+  event.preventDefault();
+  document.getElementById('overlay').classList.add('show');
+  document.getElementById('phonePopup').classList.add('show');
+}
+
+function closePhonePopup() {
+  document.getElementById('overlay').classList.remove('show');
+  document.getElementById('phonePopup').classList.remove('show');
+}
+
+// Close popup when clicking on overlay
+document.getElementById('overlay').addEventListener('click', closePhonePopup);
+
+// Function to show full-size image in a modal
+window.showFullImage = function(imageUrl) {
+  const overlay = document.getElementById('overlay');
+  const modal = document.createElement('div');
+  modal.style.cssText = `
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background: white;
+    padding: 20px;
+    border-radius: 10px;
+    z-index: 1001;
+    max-width: 90%;
+    max-height: 90vh;
+    overflow: auto;
+  `;
+  
+  modal.innerHTML = `
+    <img src="${imageUrl}" alt="prescription" style="max-width: 100%; max-height: 80vh;">
+    <button onclick="closeImageModal()" style="
+      position: absolute;
+      top: 10px;
+      right: 10px;
+      background: none;
+      border: none;
+      font-size: 24px;
+      cursor: pointer;
+    ">×</button>
+  `;
+  
+  document.body.appendChild(modal);
+  overlay.classList.add('show');
+  
+  overlay.onclick = function() {
+    closeImageModal();
+  };
+};
+
+window.closeImageModal = function() {
+  const modal = document.querySelector('div[style*="z-index: 1001"]');
+  if (modal) {
+    modal.remove();
+  }
+  document.getElementById('overlay').classList.remove('show');
+};
+</script>
+</body>
+</html>
